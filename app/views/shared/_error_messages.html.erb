@@ -1,0 +1,9 @@
+<% if target.errors.any? %>
+  <div id="error_explanation">
+    <ul style="list-style:none">
+    <% target.errors.full_messages.each do |msg| %>
+      <li>Le champ <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

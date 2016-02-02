@@ -1,0 +1,11 @@
+<% if current_user %>
+  <%= button_to("Jouer", gamblings_path, method: :post, class: "yui3-button notice") unless params[:controller] == 'rolls' %>
+  <% if current_user.guest? %>
+    <%= link_to("S’inscrire", signup_path, class: "yui3-button warning") unless params[:controller] == 'members' %>
+  <% end %>
+  <%= link_to "Se déconnecter", logout_path, class: "yui3-button error" %>
+  <% content_for :footer do %> <%= link_to_unless_current(current_user.name, user_path(current_user)) %><% end %>
+<% else %>
+  <%= button_to "Essayer", guests_path, method: :post, class: "yui3-button success" %>
+  <%= link_to "Se connecter", login_path , class: "yui3-button notice" %>
+<% end %>

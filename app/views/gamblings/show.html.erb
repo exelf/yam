@@ -1,0 +1,41 @@
+<%= content_tag(:div, "", id: "erf", class: "yui3-u", data: {rolls: format_rolls(@rolls)}) %>
+
+<% content_for :js do %>
+  <script>
+	YUI({
+		skin: 'night'
+	}).use('json-parse', 'datatable', function(Y) {
+		var erfRolls = Y.one('#erf').getAttribute('data-rolls');
+		try {
+			var data = Y.JSON.parse(erfRolls);
+		} catch (e) {
+			alert("Données corrompues. Contactez l’administrateur.");
+		}
+		var data = data;
+		var table = new Y.DataTable({
+			columns: [{
+				key: "id",
+				label: "<%= @gambling.user.name %>"
+			}, {
+				key: "libre",
+				label: "L"
+			}, {
+				key: "descente",
+				label: "D"
+			}, {
+				key: "montee",
+				label: "M"
+			}, {
+				key: "annonce",
+				label: "A"
+			}, {
+				key: "seche",
+				label: "S"
+			}],
+			data: data,
+			caption: "Score : " + "<%= @gambling.score %>",
+		});
+		table.render("#erf");
+	});
+  </script>
+<% end %>

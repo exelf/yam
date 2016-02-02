@@ -1,0 +1,14 @@
+<h1><%= t(".connection_title") %></h1>
+<%= form_tag sessions_path, id: "session", class: "yui3-u-1-2" do %>
+  <fieldset>
+    <div>
+        <strong><%= label_tag :username, Member.human_attribute_name(:username).upcase %></strong><br />
+        <%= text_field_tag :username, params[:username] %>
+    </div>
+    <div>
+        <strong><%= label_tag :password, Member.human_attribute_name(:password).upcase %></strong><br />
+        <%= password_field_tag :password %>
+    </div>
+    <div><%= submit_tag t(".connection_title"), class: "yui3-button" %></div>
+  </fieldset>
+<% end %>

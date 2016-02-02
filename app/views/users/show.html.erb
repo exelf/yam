@@ -1,0 +1,35 @@
+<% if @last %>
+  <div class="yui3-u">
+  <% if @gamblings.present? %>
+    <h3>Vos 10 meilleures parties</h3>
+    <ol style="text-align:left">
+      <% @gamblings.each do |g| %>
+        <li><strong><%= g.score %></strong> le <%= link_to g.start, gambling_path(g) %></li>
+      <% end %>
+    </ol>
+  <% end %>
+  </div>
+<% else %>
+  <div class="yui3-u">
+    Rien à afficher pour l'instant, ni palmarès, ni parties, ni duel, ni défi :</br>
+    Cliquez sur <strong>Jouer</strong>.
+  </div>
+<% end %>
+<!--
+<div class="yui3-u-1">
+  <ul id="harmony">
+    <li>
+      <strong>Vos couleurs : </strong>
+      <span style="background-color:#<%#= @colors[0] %>"></span>
+      <span style="background-color:#<%#= @colors[1] %>"></span>
+      <span style="background-color:#<%#= @colors[2] %>"></span>
+      <span style="background-color:#<%#= @colors[3] %>"></span>
+    </li>
+  </ul>
+<%# if current_user.guest? %>
+  Inscrivez-vous pour personnaliser votre profil.
+<%# else %>
+  <%#= link_to "Modifier", edit_member_path(current_user.player), class: "yui3-button" %>
+<%# end %>
+</div>
+-->

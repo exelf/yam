@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  game: 
+  user: 
+  is_over: false
+  data: 
+  score: 1
+
+two:
+  game: 
+  user: 
+  is_over: false
+  data: 
+  score: 1

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  col: 
+  combination: 
+  gambling: 
+  d1: 
+  d2: 
+  d3: 
+  memor: 1
+  kept: MyString
+  'n': 1
+  is_over: false
+  score: 1
+
+two:
+  col: 
+  combination: 
+  gambling: 
+  d1: 
+  d2: 
+  d3: 
+  memor: 1
+  kept: MyString
+  'n': 1
+  is_over: false
+  score: 1

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YoYoYam &middot; <%= content_for?(:title) ? yield(:title) : "aka Yamsec" %></title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+
+    <link rel="stylesheet" type="text/css" href="/y/cssnormalize/cssnormalize-min.css">
+    <link rel="stylesheet" type="text/css" href="/y/cssfonts/cssfonts-min.css">
+    <link rel="stylesheet" type="text/css" href="/y/cssgrids-responsive/cssgrids-responsive-min.css">
+    <link rel="stylesheet" type="text/css" href="/y/cssbutton/cssbutton-min.css">
+    <link rel="stylesheet" type="text/css" href="/style/yam.css">
+    <style>
+      <%= render 'shared/colors' if current_user %>
+      <%= yield(:css) if content_for?(:css) %>
+    </style>
+
+    <script src="/y/yui/yui-min.js"></script>
+  </head>
+
+  <body class="yui3-skin-night">
+
+    <!--  positio  -->
+    <header>
+
+      <!--  navigatio  -->
+      <nav id="navigatio">
+	    <%= yield(:bto) if content_for?(:bto) %>
+        <%= render 'shared/user_logic' unless params[:controller] == 'sessions' %>
+      </nav><!--  finis navigationis  -->
+
+      <!--  titulus  -->
+      <div id="titulus">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, id: "flash" %>
+        <% end %>
+      </div><!--  finis tituli  -->
+
+    </header>
+
+    <!-- contentus -->
+    <main>
+      <%= yield %>
+    </main><!--  finis contentus  -->
+
+    <!--  pes  -->
+    <footer style="padding:1em 1em 0 0;text-align:right">
+         <%= yield(:footer) if content_for?(:footer) %>
+    </footer><!--  finis pedis  -->
+
+    <!--  finis positionis  -->
+
+    <%= yield(:js) if content_for?(:js) %>
+
+  </body>
+</html>

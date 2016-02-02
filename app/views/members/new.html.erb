@@ -1,0 +1,24 @@
+<h1><%= t(".subscription_title") %></h1>
+
+<p class="yui3-u-1", style="text-align:left;padding:1em;">
+  <%= t(".subscription_description") %>
+</p>
+
+<%= form_for @member, html: {id: "subscribe", class: "yui3-u-1-2"} do |f| %>
+  <%= render 'shared/error_messages', target: @member %>
+  <fieldset style="text-align:left">
+    <div>
+        <strong><%= f.label :username, Member.human_attribute_name(:username).upcase %></strong><br />
+        <%= f.text_field :username, required: true %>
+    </div>
+    <div>
+        <strong><%= f.label :email, Member.human_attribute_name(:email).upcase %></strong><br />
+        <%= f.email_field :email, required: true %>
+    </div>
+    <div>
+        <strong><%= f.label :password, Member.human_attribute_name(:password).upcase %></strong><br />
+        <%= f.password_field :password, required: true %>
+    </div>
+    <div style="text-align:center"><%= f.submit t(".subscription_title"), class: "yui3-button" %></div>
+  </fieldset>
+<% end %>

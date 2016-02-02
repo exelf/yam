@@ -1,0 +1,73 @@
+<% content_for :title do %>partie #<%= @game.id %> &middot; coup #<%= @count %> / 65 &middot; lancer #<%= @roll.n %> / 3<% end %>
+
+<% content_for :css do %>
+<% end %>
+
+<!-- <div id="hcc"> -->
+  <% content_for :bto do  %>
+    <%= button_to("Poméner", @gambling, method: :delete, class: "yui3-button") if @count % 10 == 7 %>
+    <%= button_to("Annuler", [:delete, @gambling], method: :get, class: "yui3-button") if @count > 1 && @roll.n == 1 %>
+  <% end %>
+
+  <%= content_tag(:div, "", id: "qng", data: {lancer: @roll.n, name: current_user.name.titleize, rolls: format_rolls(@rolls), score: @result}) %>
+
+  <div id="pba" class="yui3-loading">
+  
+    <div id="qrf" class="yui3-widget-loading">
+      <% @roll.dices.each do |k,v| %><%= content_tag(:button, v, name: k)%><% end %>
+    </div>
+    
+    <div class="yui3-u">
+      <div id="fry" class="yui3-widget-loading">
+        <% (1..6).each do |x| %><%= content_tag(:button, x, name: x)%><% end %>
+      </div>
+    </div>
+    
+    <button id="gbt" class="yui3-widget-loading">S</button>
+    
+    <div class="yui3-u-1">
+        <ul id="svt">
+        <li style="color:gray;font-size:small;">total : <%= @roll.mus %> &middot; lancer #<%= @roll.n > 3 ? '3' : @roll.n %> / 3</li>
+        <% if @roll.figures.present? %>
+          <%  @roll.figures.each do |figure| %>
+          <li><%= [ figure[0], figure[1] ].join(" : ") %></li>
+          <% end %>
+        <% end %>
+        </ul>
+    </div>
+    
+  <%= form_for [@gambling, @roll], html: {id: "sbe", class: nil} do |f| %>
+    <%# render 'shared/error_messages', target: @roll %>
+    <div class="form-inputs">
+      <%= f.hidden_field :keep, id: "xrr", value: @roll.kept %>
+      <%= f.hidden_field :memor, id: "zrz" %>
+      <%= f.collection_select :combination_id, Combination.order(:id), :id, :name, {include_blank: true}, {id: "pbz"} %>
+      <%= f.collection_select :col_id, Col.order(:id), :id, :name, {include_blank: true}, {id: "pby"} %>
+      <%= f.check_box :is_over, id: "vfb" %>
+      <%= f.text_field :erocs, id: "reb" %>
+    </div>
+    <% if @roll.n < 3 %>
+    <div class="yui3-u-1">
+      <%= f.submit "relancer", id: "fho", class: "yui3-button" %>
+    </div>
+    <% end %>
+  <% end %>
+  </div>
+
+<!-- </div> -->
+
+<%= content_tag(:div, "", id: "erf", class: "yui3-u") %>
+
+<div id="cna" class="yui3-widget-loading">
+  <div id="anc" class="yui3-widget-bd" style="color:#fff;font-weight:bold;">
+    Que voulez-vous faire ?
+    <div class="yui3-u-1">
+      <button class="yui3-button" id="naa">Annuler</button>
+      <button class="yui3-button" id="fpb">Scorer</button>
+    </div>
+  </div>
+</div>
+
+<% content_for :js do %>
+    <script src="/script/bcd.js"></script>
+<% end %>

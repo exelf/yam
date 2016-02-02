@@ -1,0 +1,10 @@
+<h1>Palmarès</h1>
+<div id="palmares">
+<%= content_tag(:div, "", id: "day",   class: "yui3-u") %>
+<%= content_tag(:div, "", id: "week",  class: "yui3-u") %>
+<%= content_tag(:div, "", id: "month", class: "yui3-u") %>
+</div>
+<%= content_tag :div, "", id: "data", data: {g: @data} %>
+<% content_for :js do %>
+    <script src="/script/pdca.js"></script>
+<% end %>
