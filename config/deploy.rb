@@ -26,7 +26,7 @@ namespace :deploy do
     run "cd #{current_path} && bundle exec pumactl -P #{shared_path}/pids/puma.pid stop"
   end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && bundle exec pumactl -S #{shared_path}/pids/puma.state restart"
+    run "cd #{current_path} && bundle exec pumactl -S #{shared_path}/pids/puma.state phased-restart"
   end
 
   task :setup_config, roles: :app do

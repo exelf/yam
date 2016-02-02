@@ -5,7 +5,7 @@
 
 <!-- <div id="hcc"> -->
   <% content_for :bto do  %>
-    <%= button_to("Poméner", @gambling, method: :delete, class: "yui3-button") if @count % 10 == 7 %>
+    <%= button_to("Poméner", @gambling, method: :delete, class: "yui3-button") if @count % 7 == 0 %>
     <%= button_to("Annuler", [:delete, @gambling], method: :get, class: "yui3-button") if @count > 1 && @roll.n == 1 %>
   <% end %>
 
